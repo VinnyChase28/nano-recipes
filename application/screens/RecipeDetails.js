@@ -136,8 +136,9 @@ export default class RecipeDetails extends Component {
 
   render() {
     const { item } = this.state;
+    console.log(item.recipe_image);
     var user = firebase.auth().currentUser;
-    console.log(user.uid);
+
     return (
       <Container style={styles.background_general}>
         <LinearGradient
@@ -217,7 +218,7 @@ export default class RecipeDetails extends Component {
         </LinearGradient>
 
         <ImageBackground
-          source={{ uri: item.recipe_image }}
+          source={{ uri: ConfigApp.URL + "images/" + item.recipe_image }}
           style={{
             height: height * 0.4,
             alignItems: "flex-start",
@@ -426,6 +427,33 @@ export default class RecipeDetails extends Component {
                 <View style={{ margin: 10, backgroundColor: "#FFF" }}>
                   <HTML
                     value={item.recipe_directions}
+                    onLinkPress={(evt, href) => {
+                      Linking.openURL(href);
+                    }}
+                  />
+                </View>
+              </CollapseBody>
+            </Collapse>
+
+            <Collapse isCollapsed={true}>
+              <CollapseHeader>
+                <LinearGradient
+                  colors={[ColorsApp.SECOND, ColorsApp.PRIMARY]}
+                  start={[0, 0]}
+                  end={[1, 0]}
+                  style={styles.collapseStyle}
+                >
+                  <Text
+                    style={{ color: "#fff", fontWeight: "bold", fontSize: 13 }}
+                  >
+                    {Strings.ST14.toUpperCase()}
+                  </Text>
+                </LinearGradient>
+              </CollapseHeader>
+              <CollapseBody>
+                <View style={{ marginHorizontal: 20, backgroundColor: "#FFF" }}>
+                  <HTML
+                    value={item.recipe_notes}
                     onLinkPress={(evt, href) => {
                       Linking.openURL(href);
                     }}
