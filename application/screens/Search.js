@@ -49,33 +49,13 @@ export default class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoaded: true,
-      string: this.props.route.params.string,
-      word: this.props.route.params.string,
+      isLoading: false,
+      // string: this.props.route.params.string,
+      // word: this.props.route.params.string,
     };
   }
 
   componentDidMount() {}
-
-  makeRemoteRequest = (string) => {
-    this.setState({ string });
-
-    return fetch(
-      "https://us-central1-north-face-seo.cloudfunctions.net/function-1"
-    )
-      .then((response) => response.json())
-      .then((responseJson) => {
-        if (responseJson == "false") {
-        } else {
-          console.log(responseJson);
-          this.setState({
-            recipes: responseJson,
-            isLoading: false,
-          });
-        }
-      })
-      .catch((error) => {});
-  };
 
   ListEmptyView = () => {
     return <ListEmpty />;
@@ -178,7 +158,7 @@ export default class Search extends Component {
               />
               <Input
                 placeholder={Strings.ST40}
-                onChangeText={this.makeRemoteRequest.bind(this)}
+                // onChangeText={this.makeRemoteRequest.bind(this)}
                 placeholderTextColor="#a4a4a4"
                 style={{ fontSize: 15, color: "#a4a4a4" }}
               />

@@ -9,6 +9,7 @@ import {
   Linking,
   Image,
   StatusBar,
+  FlatList,
 } from "react-native";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { Grid, Row, Col } from "react-native-easy-grid";
@@ -136,8 +137,19 @@ export default class RecipeDetails extends Component {
 
   render() {
     const { item } = this.state;
-    console.log(item.recipe_image);
-    var user = firebase.auth().currentUser;
+    console.log(item.recipe_ingredients.length, item.recipe_directions.length);
+    let user = firebase.auth().currentUser;
+    const ItemDivider = () => {
+      return (
+        <View
+          style={{
+            height: 1,
+            width: "100%",
+            backgroundColor: "#607D8B",
+          }}
+        />
+      );
+    };
 
     return (
       <Container style={styles.background_general}>
@@ -218,7 +230,7 @@ export default class RecipeDetails extends Component {
         </LinearGradient>
 
         <ImageBackground
-          source={{ uri: ConfigApp.URL + "images/" + item.recipe_image }}
+          source={{ uri: item.recipe_image }}
           style={{
             height: height * 0.4,
             alignItems: "flex-start",
@@ -289,6 +301,7 @@ export default class RecipeDetails extends Component {
             <ItemRating itemId={item.recipe_id} starSize={18} starWidth={95} />
           </LinearGradient>
         </ImageBackground>
+
         <ScrollView>
           <Grid style={{ marginTop: 20, marginBottom: 10 }}>
             <Col
@@ -371,14 +384,7 @@ export default class RecipeDetails extends Component {
             </Col>
           </Grid>
 
-          <View style={{ marginHorizontal: 20 }}>
-            <HTML
-              value={item.recipe_description}
-              onLinkPress={(evt, href) => {
-                Linking.openURL(href);
-              }}
-            />
-          </View>
+         
 
           <View style={{ marginHorizontal: 20, marginVertical: 20 }}>
             <Collapse isCollapsed={true}>
@@ -398,11 +404,13 @@ export default class RecipeDetails extends Component {
               </CollapseHeader>
               <CollapseBody>
                 <View style={{ margin: 10, backgroundColor: "#FFF" }}>
-                  <HTML
-                    value={item.recipe_ingredients}
-                    onLinkPress={(evt, href) => {
-                      Linking.openURL(href);
-                    }}
+                  <FlatList
+                    data={item.recipe_ingredients}
+                    renderItem={({ item, index }) => (
+                      <Text style={{ padding: 5 }}>{item}</Text>
+                    )}
+                    ItemSeparatorComponent={ItemDivider}
+                    keyExtractor={(index) => index + 1}
                   />
                 </View>
               </CollapseBody>
@@ -425,11 +433,26 @@ export default class RecipeDetails extends Component {
               </CollapseHeader>
               <CollapseBody>
                 <View style={{ margin: 10, backgroundColor: "#FFF" }}>
-                  <HTML
-                    value={item.recipe_directions}
-                    onLinkPress={(evt, href) => {
-                      Linking.openURL(href);
-                    }}
+                  <FlatList
+                    data={item.recipe_directions}
+                    renderItem={({ item, index }) => (
+                      <View
+                        style={[
+                          styles.container,
+                          {
+                            // Try setting `flexDirection` to `"row"`.
+                            flexDirection: "row",
+                          },
+                        ]}
+                      >
+                        <Text style={{ padding: 5, color: "#ff8c00" }}>
+                          {index + 1}
+                        </Text>
+                        <Text style={{ padding: 5 }}>{item}</Text>
+                      </View>
+                    )}
+                    ItemSeparatorComponent={ItemDivider}
+                    keyExtractor={(index) => index + 1}
                   />
                 </View>
               </CollapseBody>

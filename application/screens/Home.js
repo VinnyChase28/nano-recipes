@@ -6,6 +6,7 @@ import {
   ScrollView,
   SafeAreaView,
   TouchableOpacity,
+  TextInput,
   FlatList,
 } from "react-native";
 import {
@@ -52,7 +53,6 @@ export default class Home extends Component {
     super(props);
     this.state = {
       string: "",
-      recipe: null,
     };
   }
 
@@ -78,22 +78,45 @@ export default class Home extends Component {
     this.props.navigation.navigate("RecipeDetailsScreen", { item });
   };
 
-  makeRemoteRequest = (string) => {
+  componentDidMount() {
+    this.setState({ string: (this.state.string = "") });
+  }
+
+  makeRemoteRequest = () => {
+    let myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    let raw = JSON.stringify({
+      data: this.state.string,
+    });
+
+    let requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+    console.log("fired");
     return fetch(
-      "https://us-central1-north-face-seo.cloudfunctions.net/function-1"
-    )
-      .then((response) => response.json())
-      .then((responseJson) => {
-        if (responseJson == "false") {
-        } else {
-          this.setState({
-            recipe: responseJson,
-            isLoading: false,
-          });
-          this.RecipeDetails(responseJson);
-        }
-      })
-      .catch((error) => {});
+      "https://us-central1-north-face-seo.cloudfunctions.net/function-1",
+      requestOptions
+    ).then((response) =>
+      response
+        .json()
+        .then((responseJson) => {
+          if (responseJson == "false") {
+          } else {
+            console.log("fired2");
+            this.setState({
+              recipe: responseJson,
+              // isLoading: false,
+            });
+            this.RecipeDetails(responseJson);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+    );
   };
 
   render() {
