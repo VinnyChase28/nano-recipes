@@ -30,6 +30,7 @@ class CategoriesHome extends React.PureComponent {
     return fetch(ConfigApp.URL + "json/data_categories.php")
       .then((response) => response.json())
       .then((responseJson) => {
+        console.log(responseJson);
         this.setState(
           {
             categories: responseJson.filter((e, index) => {

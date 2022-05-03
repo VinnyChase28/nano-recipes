@@ -76,8 +76,6 @@ export default class RecipesByCategory extends Component {
       return <AppPreLoader />;
     }
 
-    console.log(ConfigApp.URL + "images/" + item.recipe_image);
-
     return (
       <Container style={styles.background_general}>
         <LinearGradient

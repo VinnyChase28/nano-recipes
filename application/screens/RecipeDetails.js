@@ -384,8 +384,6 @@ export default class RecipeDetails extends Component {
             </Col>
           </Grid>
 
-         
-
           <View style={{ marginHorizontal: 20, marginVertical: 20 }}>
             <Collapse isCollapsed={true}>
               <CollapseHeader>
