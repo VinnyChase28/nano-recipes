@@ -88,7 +88,7 @@ class RecipeFav extends React.Component {
             >
               <Thumbnail
                 size={80}
-                source={{ uri: ConfigApp.URL + "images/" + item.recipe_image }}
+                source={{ uri: item.recipe_image }}
                 style={{ paddingLeft: 10, marginLeft: 10, borderRadius: 10 }}
               />
               <Body style={{ paddingLeft: 0, marginLeft: 0 }}>

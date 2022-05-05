@@ -30,6 +30,7 @@ import Strings from "../utils/Strings";
 import BannerAd from "../components/BannerAd";
 import { Grid, Row, Col } from "react-native-easy-grid";
 import ColorsApp from "../utils/ColorsApp";
+import { SUPABASE_KEY } from "@env";
 
 var styles = require("../../assets/files/Styles");
 var { height, width } = Dimensions.get("window");
@@ -43,10 +44,15 @@ export default class RecipesByCategory extends Component {
   }
 
   componentDidMount() {
+    console.log(this.props.route.params.IdCategory);
     return fetch(
-      ConfigApp.URL +
-        "json/data_recipes_category.php?category=" +
-        this.props.route.params.IdCategory
+      `https://fodlmtsqwocmyxtgpqiw.supabase.co/rest/v1/recipes?or=(category_title.eq.${this.props.route.params.TitleCategory})`,
+      {
+        headers: {
+          apikey: SUPABASE_KEY,
+          Authorization: `Bearer ${SUPABASE_KEY}`,
+        },
+      }
     )
       .then((response) => response.json())
       .then((responseJson) => {
@@ -171,7 +177,7 @@ export default class RecipesByCategory extends Component {
                 >
                   <ImageBackground
                     source={{
-                      uri: ConfigApp.URL + "images/" + item.recipe_image,
+                      uri: item.recipe_image,
                     }}
                     style={styles.background_card}
                   >

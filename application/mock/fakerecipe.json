@@ -1,47 +1,22 @@
 [
   {
-    "category_image": "category_1542100597.jpg",
-    "category_title": "Salads",
-    "id": 0
-  },
-  {
-    "category_image": "category_1542100738.jpg",
-    "category_title": "Burgers",
+    "category_image": "category_1542100177.jpg",
+    "category_title": "Breakfast",
     "id": 1
   },
   {
-    "category_image": "category_1542100177.jpg",
-    "category_title": "Breakfast",
+    "category_image": "category_1542100516.jpg",
+    "category_title": "Lunch",
     "id": 2
   },
   {
-    "category_image": "category_1542101131.jpg",
-    "category_title": "Drinks",
-    "id": 3
-  },
-  {
-    "category_image": "category_1542100963.jpg",
-    "category_title": "Vegetarian",
-    "id": 4
-  },
-  {
-    "category_image": "category_1542100828.jpg",
-    "category_title": "Beef",
-    "id": 5
-  },
-  {
-    "category_image": "category_1542100516.jpg",
-    "category_title": "Appetisers",
-    "id": 6
-  },
-  {
     "category_image": "category_1542101037.jpg",
-    "category_title": "Desserts",
-    "id": 7
+    "category_title": "Dinner",
+    "id": 3
   },
   {
     "category_image": "category_1542100382.jpg",
     "category_title": "Snacks",
-    "id": 8
+    "id": 4
   }
 ]

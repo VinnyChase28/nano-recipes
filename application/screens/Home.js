@@ -351,7 +351,7 @@ export default class Home extends Component {
           </ListItem>
 
           <GridRecipesHome />
-
+          {/* 
           <ListItem icon style={{ borderBottomWidth: 0 }}>
             <Body style={{ borderBottomWidth: 0 }}>
               <Text
@@ -387,9 +387,9 @@ export default class Home extends Component {
                 </View>
               </TouchableOpacity>
             </Right>
-          </ListItem>
+          </ListItem> */}
 
-          <ChefsHome />
+          {/* <ChefsHome /> */}
 
           <View style={{ height: height * 0.05 }}></View>
         </ScrollView>

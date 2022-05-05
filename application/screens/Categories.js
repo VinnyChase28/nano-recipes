@@ -37,6 +37,7 @@ import ConfigApp from "../utils/ConfigApp";
 import AppPreLoader from "../components/AppPreLoader";
 import Strings from "../utils/Strings";
 import BannerAd from "../components/BannerAd";
+import { SUPABASE_KEY } from "@env";
 
 var styles = require("../../assets/files/Styles");
 var { height, width } = Dimensions.get("window");
@@ -51,7 +52,15 @@ export default class Categories extends Component {
   }
 
   componentDidMount() {
-    return fetch(ConfigApp.URL + "json/data_categories.php")
+    return fetch(
+      "https://fodlmtsqwocmyxtgpqiw.supabase.co/rest/v1/categories?select=*",
+      {
+        headers: {
+          apikey: SUPABASE_KEY,
+          Authorization: `Bearer ${SUPABASE_KEY}`,
+        },
+      }
+    )
       .then((response) => response.json())
       .then((responseJson) => {
         this.setState(
@@ -59,7 +68,9 @@ export default class Categories extends Component {
             isLoading: false,
             categories: responseJson,
           },
-          function () {}
+          function () {
+            console.log(responseJson);
+          }
         );
       })
       .catch((error) => {
@@ -72,6 +83,7 @@ export default class Categories extends Component {
       IdCategory: category_id,
       TitleCategory: category_title,
     });
+    console.log(category_id, category_title);
   };
 
   search = (string) => {

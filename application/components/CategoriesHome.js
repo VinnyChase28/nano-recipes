@@ -14,6 +14,7 @@ import AppPreLoader from "./AppPreLoader";
 import ConfigApp from "../utils/ConfigApp";
 import GridView from "react-native-super-grid";
 import Strings from "../utils/Strings";
+import { SUPABASE_KEY } from "@env";
 
 var styles = require("../../assets/files/Styles");
 var { height, width } = Dimensions.get("window");
@@ -27,7 +28,15 @@ class CategoriesHome extends React.PureComponent {
   }
 
   componentDidMount() {
-    return fetch(ConfigApp.URL + "json/data_categories.php")
+    return fetch(
+      "https://fodlmtsqwocmyxtgpqiw.supabase.co/rest/v1/categories?select=*",
+      {
+        headers: {
+          apikey: `${SUPABASE_KEY}`,
+          Authorization: `Bearer ${SUPABASE_KEY}`,
+        },
+      }
+    )
       .then((response) => response.json())
       .then((responseJson) => {
         console.log(responseJson);
@@ -50,9 +59,11 @@ class CategoriesHome extends React.PureComponent {
       IdCategory: category_id,
       TitleCategory: category_title,
     });
+    console.log(category_id, category_title);
   };
 
   render() {
+    console.log("Categories2");
     return (
       <View style={{ margin: 5 }}>
         <FlatList

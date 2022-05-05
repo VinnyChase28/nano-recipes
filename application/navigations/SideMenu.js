@@ -60,7 +60,7 @@ export default class SideMenu extends Component {
             </Right>
           </ListItem>
 
-          <ListItem
+          {/* <ListItem
             style={styles.item_menu}
             onPress={this.navigateToScreen("ChefsScreen")}
             icon
@@ -74,7 +74,7 @@ export default class SideMenu extends Component {
             <Right style={{ borderBottomWidth: 0 }}>
               <SimpleLineIcons name="arrow-right" style={styles.icon_menu} />
             </Right>
-          </ListItem>
+          </ListItem> */}
 
           <ListItem
             style={styles.item_menu}
