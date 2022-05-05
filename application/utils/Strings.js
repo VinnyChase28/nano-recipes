@@ -79,7 +79,7 @@ const Strings = {
 
   ST38: "Nano Recipes",
 
-  ST39: "Enter a recipe URL below",
+  ST39: "Enter a recipe URL below to grab the info",
 
   ST40: "Enter recipe URL",
 
