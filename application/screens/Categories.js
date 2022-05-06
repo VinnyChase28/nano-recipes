@@ -69,7 +69,6 @@ export default class Categories extends Component {
             categories: responseJson,
           },
           function () {
-            console.log(responseJson);
           }
         );
       })
@@ -83,7 +82,6 @@ export default class Categories extends Component {
       IdCategory: category_id,
       TitleCategory: category_title,
     });
-    console.log(category_id, category_title);
   };
 
   search = (string) => {

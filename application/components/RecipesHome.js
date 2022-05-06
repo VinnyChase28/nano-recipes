@@ -43,9 +43,7 @@ class RecipesHome extends React.PureComponent {
       .then((responseJson) => {
         this.setState(
           {
-            recipes: responseJson.filter((e, index) => {
-              return e.recipe_featured == "Yes";
-            }),
+            recipes: responseJson,
           },
           function () {}
         );

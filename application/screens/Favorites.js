@@ -52,7 +52,6 @@ export default class Favorites extends Component {
   }
 
   render() {
-    console.log("Loaded favorites");
     return (
       <Container style={styles.background_general}>
         <LinearGradient

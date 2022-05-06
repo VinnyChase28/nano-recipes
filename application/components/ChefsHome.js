@@ -50,23 +50,23 @@ class ChefsHome extends React.PureComponent {
     };
   }
 
-  componentDidMount() {
-    return fetch(ConfigApp.URL + "json/data_chefs.php")
-      .then((response) => response.json())
-      .then((responseJson) => {
-        this.setState(
-          {
-            chefs: responseJson.filter((e, index) => {
-              return index < 6;
-            }),
-          },
-          function () {}
-        );
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
+  // componentDidMount() {
+  //   return fetch(ConfigApp.URL + "json/data_chefs.php")
+  //     .then((response) => response.json())
+  //     .then((responseJson) => {
+  //       this.setState(
+  //         {
+  //           chefs: responseJson.filter((e, index) => {
+  //             return index < 6;
+  //           }),
+  //         },
+  //         function () {}
+  //       );
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // }
 
   RecipesByChef = (chef_id, chef_title) => {
     this.props.navigation.navigate("RecipesByChefScreen", {

@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   TextInput,
   FlatList,
+  Alert,
 } from "react-native";
 import {
   Container,
@@ -52,6 +53,7 @@ export default class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoading: false,
       string: "",
     };
   }
@@ -95,8 +97,7 @@ export default class Home extends Component {
       body: raw,
       redirect: "follow",
     };
-    console.log("fired");
-    return fetch(
+    fetch(
       "https://us-central1-north-face-seo.cloudfunctions.net/function-1",
       requestOptions
     ).then((response) =>
@@ -104,17 +105,49 @@ export default class Home extends Component {
         .json()
         .then((responseJson) => {
           if (responseJson == "false") {
+            <p>Loading...</p>;
           } else {
-            console.log("fired2");
-            this.setState({
-              recipe: responseJson,
-              // isLoading: false,
-            });
-            this.RecipeDetails(responseJson);
+            console.log(responseJson);
+            if (
+              typeof responseJson.recipe_title == "string" &&
+              typeof responseJson.recipe_image == "string" &&
+              typeof responseJson.recipe_servings == "string"
+            ) {
+              this.setState({
+                recipe: responseJson,
+                isLoading: false,
+              });
+              this.RecipeDetails(responseJson);
+            } else {
+              Alert.alert(
+                "Oops!",
+                "Please check your URL, or the recipe is in a format we don't understand yet.",
+                [
+                  {
+                    text: "Cancel",
+                    onPress: () => console.log("Cancel Pressed"),
+                    style: "cancel",
+                  },
+                  { text: "OK", onPress: () => console.log("OK Pressed") },
+                ]
+              );
+            }
           }
         })
         .catch((error) => {
-          console.log(error);
+          console.log(JSON.stringify(error));
+          Alert.alert(
+            "Oops!",
+            "Please check your URL, or the recipe is in a format we don't understand yet.",
+            [
+              {
+                text: "Cancel",
+                onPress: () => console.log("Cancel Pressed"),
+                style: "cancel",
+              },
+              { text: "OK", onPress: () => console.log("OK Pressed") },
+            ]
+          );
         })
     );
   };

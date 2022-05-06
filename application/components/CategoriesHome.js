@@ -39,12 +39,9 @@ class CategoriesHome extends React.PureComponent {
     )
       .then((response) => response.json())
       .then((responseJson) => {
-        console.log(responseJson);
         this.setState(
           {
-            categories: responseJson.filter((e, index) => {
-              return index < 6;
-            }),
+            categories: responseJson,
           },
           function () {}
         );
@@ -59,11 +56,9 @@ class CategoriesHome extends React.PureComponent {
       IdCategory: category_id,
       TitleCategory: category_title,
     });
-    console.log(category_id, category_title);
   };
 
   render() {
-    console.log("Categories2");
     return (
       <View style={{ margin: 5 }}>
         <FlatList

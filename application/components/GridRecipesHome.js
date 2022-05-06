@@ -71,7 +71,6 @@ class GridRecipesHome extends React.PureComponent {
           },
 
           function () {
-            console.log(responseJson);
           }
         );
       })
