@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Yonia",
-    "slug": "yonia",
+    "name": "Nano Recipes",
+    "slug": "nanorecipes",
     "version": "10.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
