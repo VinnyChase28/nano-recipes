@@ -30,7 +30,7 @@ class RecipesHome extends React.PureComponent {
 
   componentDidMount() {
     return fetch(
-      "https://fodlmtsqwocmyxtgpqiw.supabase.co/rest/v1/recipes?id=eq.1&select=*",
+      "https://fodlmtsqwocmyxtgpqiw.supabase.co/rest/v1/recipes?&select=*",
       {
         headers: {
           apikey: SUPABASE_KEY,
@@ -41,6 +41,7 @@ class RecipesHome extends React.PureComponent {
     )
       .then((response) => response.json())
       .then((responseJson) => {
+        console.log(responseJson.length, "this many recipes in recipes home");
         this.setState(
           {
             recipes: responseJson,
@@ -65,7 +66,7 @@ class RecipesHome extends React.PureComponent {
         style={{ flex: 1, marginRight: 10 }}
       >
         <ImageBackground
-          source={{ uri: ConfigApp.URL + "images/" + item.recipe_image }}
+          source={{ uri: item.recipe_image }}
           style={{
             height: 100,
             width: width * 0.7,

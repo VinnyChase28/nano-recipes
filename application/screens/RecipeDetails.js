@@ -137,7 +137,6 @@ export default class RecipeDetails extends Component {
 
   render() {
     const { item } = this.state;
-    console.log(item.recipe_ingredients.length, item.recipe_directions.length);
     let user = firebase.auth().currentUser;
     const ItemDivider = () => {
       return (
@@ -562,7 +561,7 @@ export default class RecipeDetails extends Component {
           </View>
         </Modal>
 
-        <BannerAd />
+        {/* <BannerAd /> */}
       </Container>
     );
   }

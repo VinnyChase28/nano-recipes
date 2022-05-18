@@ -126,7 +126,7 @@ export default class Favorites extends Component {
           <RecipeFav />
         </ScrollView>
 
-        <BannerAd />
+        {/* <BannerAd /> */}
       </Container>
     );
   }

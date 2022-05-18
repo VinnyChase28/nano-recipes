@@ -13,6 +13,7 @@ import { RootSiblingParent } from "react-native-root-siblings";
 import { NavigationContainer } from "@react-navigation/native";
 import GuestNavigation from "./application/navigations/Guest";
 import LoggedNavigation from "./application/navigations/Navigation";
+import "react-native-url-polyfill/auto";
 
 LogBox.ignoreLogs([
   "VirtualizedLists should never be nested inside plain ScrollViews with the same orientation because it can break windowing and other functionality - use another VirtualizedList-backed container instead.",

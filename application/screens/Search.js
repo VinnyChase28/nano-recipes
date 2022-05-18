@@ -258,7 +258,7 @@ export default class Search extends Component {
           <View style={{ height: height * 0.1 }} />
         </ScrollView>
 
-        <BannerAd />
+        {/* <BannerAd /> */}
       </Container>
     );
   }

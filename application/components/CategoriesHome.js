@@ -22,9 +22,7 @@ var { height, width } = Dimensions.get("window");
 class CategoriesHome extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = {
-      categories: [],
-    };
+    this.state = {};
   }
 
   componentDidMount() {
@@ -67,11 +65,7 @@ class CategoriesHome extends React.PureComponent {
           numColumns={2}
           renderItem={({ item }) => (
             <TouchableOpacity
-              onPress={this.RecipesByCategory.bind(
-                this,
-                item.category_id,
-                item.category_title
-              )}
+              onPress={this.RecipesByCategory.bind(this, item.category_title)}
               activeOpacity={1}
               style={{ flex: 1, marginHorizontal: 5 }}
             >

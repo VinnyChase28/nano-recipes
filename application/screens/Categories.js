@@ -68,8 +68,7 @@ export default class Categories extends Component {
             isLoading: false,
             categories: responseJson,
           },
-          function () {
-          }
+          function () {}
         );
       })
       .catch((error) => {
@@ -234,7 +233,7 @@ export default class Categories extends Component {
           <View style={{ height: height * 0.1 }} />
         </ScrollView>
 
-        <BannerAd />
+        {/* <BannerAd /> */}
       </Container>
     );
   }

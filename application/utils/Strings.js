@@ -23,7 +23,7 @@ const Strings = {
 
   ST10: "Featured Recipes",
 
-  ST11: "Random Categories",
+  ST11: "Basic Categories",
 
   ST12: "Recommended Recipes",
 

@@ -31,9 +31,18 @@ import BannerAd from "../components/BannerAd";
 import { Grid, Row, Col } from "react-native-easy-grid";
 import ColorsApp from "../utils/ColorsApp";
 import { SUPABASE_KEY } from "@env";
+import { supabase } from "../utils/Supabase";
 
 var styles = require("../../assets/files/Styles");
 var { height, width } = Dimensions.get("window");
+
+async function test() {
+  const { data, error } = await supabase
+    .from("recipes")
+    .select()
+    .eq("category_id", this.props.route.params.TitleCategory);
+  console.log(data, error);
+}
 
 export default class RecipesByCategory extends Component {
   constructor(props) {
@@ -44,7 +53,7 @@ export default class RecipesByCategory extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.route.params.IdCategory);
+    test();
     return fetch(
       `https://fodlmtsqwocmyxtgpqiw.supabase.co/rest/v1/recipes?or=(category_title.eq.${this.props.route.params.TitleCategory})`,
       {
@@ -237,7 +246,7 @@ export default class RecipesByCategory extends Component {
           <View style={{ height: height * 0.1 }} />
         </ScrollView>
 
-        <BannerAd />
+        {/* <BannerAd /> */}
       </Container>
     );
   }
