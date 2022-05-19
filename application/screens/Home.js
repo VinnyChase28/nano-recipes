@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 import {
   ImageBackground,
   Dimensions,
@@ -9,6 +9,7 @@ import {
   TextInput,
   FlatList,
   Alert,
+  ActivityIndicator,
 } from "react-native";
 import {
   Container,
@@ -31,6 +32,7 @@ import {
   ListItem,
   Thumbnail,
 } from "native-base";
+import AppPreLoader from "../components/AppPreLoader";
 import { Grid, Row, Col } from "react-native-easy-grid";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
@@ -54,6 +56,7 @@ export default class Home extends Component {
     super(props);
     this.state = {
       isLoading: false,
+      test: false,
       string: "",
     };
   }
@@ -85,6 +88,14 @@ export default class Home extends Component {
   }
 
   makeRemoteRequest = () => {
+    this.setState(
+      { isLoading: true },
+      () => {
+        console.log(this.state.isLoading, "started loading");
+      },
+      this.isLoading
+    );
+
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     let raw = JSON.stringify({
@@ -104,10 +115,10 @@ export default class Home extends Component {
       response
         .json()
         .then((responseJson) => {
-          if (responseJson == "false") {
-            <p>Loading...</p>;
+          if (!responseJson) {
+            console.log("no response");
           } else {
-            console.log(responseJson);
+            console.log(responseJson.recipe_directions.length);
             if (
               typeof responseJson.recipe_title == "string" &&
               typeof responseJson.recipe_image == "string" &&
@@ -118,10 +129,10 @@ export default class Home extends Component {
                 isLoading: false,
               });
               this.RecipeDetails(responseJson);
-            } else {
+            } else if (responseJson.recipe_directions.length > 30) {
               Alert.alert(
-                "Oops!",
-                "Please check your URL, or the recipe is in a format we don't understand yet.",
+                "That didn't work.",
+                "The recipe appears to be in a format we don't understand yet.",
                 [
                   {
                     text: "Cancel",
@@ -130,15 +141,34 @@ export default class Home extends Component {
                   },
                   { text: "OK", onPress: () => console.log("OK Pressed") },
                 ]
-              );
+              ),
+                this.setState({
+                  isLoading: false,
+                });
+            } else {
+              Alert.alert(
+                "That didn't work.",
+                "The recipe appears to be in a format we don't understand yet.",
+                [
+                  {
+                    text: "Cancel",
+                    onPress: () => console.log("Cancel Pressed"),
+                    style: "cancel",
+                  },
+                  { text: "OK", onPress: () => console.log("OK Pressed") },
+                ]
+              ),
+                this.setState({
+                  isLoading: false,
+                });
             }
           }
         })
         .catch((error) => {
           console.log(JSON.stringify(error));
           Alert.alert(
-            "Oops!",
-            "Please check your URL, or the recipe is in a format we don't understand yet.",
+            "That didn't work.",
+            "The recipe appears to be in a format we don't understand yet.",
             [
               {
                 text: "Cancel",
@@ -147,12 +177,22 @@ export default class Home extends Component {
               },
               { text: "OK", onPress: () => console.log("OK Pressed") },
             ]
-          );
+          ),
+            this.setState({
+              isLoading: false,
+            });
         })
     );
   };
 
   render() {
+    if (this.state.isLoading === true) {
+      return (
+        <View style={[styles.spinnerContainer, styles.spinner]}>
+          <ActivityIndicator size="large" color="orange" />
+        </View>
+      );
+    }
     return (
       <Container style={styles.background_general}>
         <LinearGradient

@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Nano Recipes",
+    "name": "nano recipes",
     "slug": "nanorecipes",
     "version": "10.0.1",
     "orientation": "portrait",
@@ -13,12 +13,10 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.wicombit.yonia"
+      "bundleIdentifier": "com.wicombit.nanorecipes"
     },
     "android": {
       "adaptiveIcon": {

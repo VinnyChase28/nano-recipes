@@ -10,6 +10,7 @@ import {
   Image,
   StatusBar,
   FlatList,
+  ActivityIndicator,
 } from "react-native";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { Grid, Row, Col } from "react-native-easy-grid";
@@ -57,6 +58,7 @@ export default class RecipeDetails extends Component {
       item: this.props.route.params.item,
       mute: false,
       shouldPlay: false,
+      isLoading: true,
     };
   }
 
@@ -79,6 +81,7 @@ export default class RecipeDetails extends Component {
     recipe_notes,
     recipe_cals,
     recipe_servings,
+    url,
     uid
   ) => {
     try {
@@ -95,6 +98,7 @@ export default class RecipeDetails extends Component {
         recipe_directions: recipe_directions,
         recipe_notes: recipe_notes,
         recipe_cals: recipe_cals,
+        url: url,
         recipe_servings: recipe_servings,
       };
 
@@ -149,7 +153,15 @@ export default class RecipeDetails extends Component {
         />
       );
     };
+    //shorten url for display
+    let one = item.url;
+    let urlOne = new URL(one);
 
+    if (this.state.item == null) {
+      <View style={[styles.spinnerContainer, styles.spinner]}>
+        <ActivityIndicator size="large" color="orange" />
+      </View>;
+    }
     return (
       <Container style={styles.background_general}>
         <LinearGradient
@@ -216,6 +228,7 @@ export default class RecipeDetails extends Component {
                   item.recipe_notes,
                   item.recipe_cals,
                   item.recipe_servings,
+                  item.url,
                   user.uid
                 )}
               >
@@ -272,7 +285,7 @@ export default class RecipeDetails extends Component {
                 }}
               >
                 <Text style={{ color: "#FFF", fontSize: 11 }}>
-                  {item.category_title}
+                  Recipe tag coming soon
                 </Text>
               </LinearGradient>
               <Text
@@ -283,7 +296,7 @@ export default class RecipeDetails extends Component {
                   padding: 5,
                 }}
               >
-                {Strings.ST41} {item.chef_title}
+                {Strings.ST41} {urlOne.origin}
               </Text>
             </View>
             <Text
@@ -326,7 +339,7 @@ export default class RecipeDetails extends Component {
                 {Strings.ST16}
               </Text>
               <Text style={{ fontSize: 14, fontWeight: "bold" }}>
-                {item.recipe_time}
+                {item.recipe_time + " min"}
               </Text>
             </Col>
 
@@ -393,7 +406,11 @@ export default class RecipeDetails extends Component {
                   style={styles.collapseStyle}
                 >
                   <Text
-                    style={{ color: "#fff", fontWeight: "bold", fontSize: 13 }}
+                    style={{
+                      color: "#fff",
+                      fontWeight: "bold",
+                      fontSize: 13,
+                    }}
                   >
                     {Strings.ST21.toUpperCase()}
                   </Text>
@@ -422,7 +439,11 @@ export default class RecipeDetails extends Component {
                   style={styles.collapseStyle}
                 >
                   <Text
-                    style={{ color: "#fff", fontWeight: "bold", fontSize: 13 }}
+                    style={{
+                      color: "#fff",
+                      fontWeight: "bold",
+                      fontSize: 13,
+                    }}
                   >
                     {Strings.ST22.toUpperCase()}
                   </Text>
@@ -442,10 +463,10 @@ export default class RecipeDetails extends Component {
                           },
                         ]}
                       >
-                        <Text style={{ padding: 5, color: "#ff8c00" }}>
+                        <Text style={{ padding: 1, color: "#ff8c00" }}>
                           {index + 1}
                         </Text>
-                        <Text style={{ padding: 5 }}>{item}</Text>
+                        <Text style={{ padding: 1 }}>{item}</Text>
                       </View>
                     )}
                     ItemSeparatorComponent={ItemDivider}
@@ -464,7 +485,11 @@ export default class RecipeDetails extends Component {
                   style={styles.collapseStyle}
                 >
                   <Text
-                    style={{ color: "#fff", fontWeight: "bold", fontSize: 13 }}
+                    style={{
+                      color: "#fff",
+                      fontWeight: "bold",
+                      fontSize: 13,
+                    }}
                   >
                     {Strings.ST14.toUpperCase()}
                   </Text>
