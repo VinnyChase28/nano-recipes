@@ -162,18 +162,6 @@ export default class Settings extends Component {
               <ListItem
                 icon
                 style={{ marginLeft: 0, borderBottomWidth: 0 }}
-                onPress={this.navigateToScreen("ContactUsScreen")}
-              >
-                <Left style={{ borderBottomWidth: 0 }}></Left>
-                <Body style={{ borderBottomWidth: 0 }}>
-                  <Text>{Strings.ST75}</Text>
-                </Body>
-                <Right style={{ borderBottomWidth: 0 }}></Right>
-              </ListItem>
-
-              <ListItem
-                icon
-                style={{ marginLeft: 0, borderBottomWidth: 0 }}
                 onPress={this.navigateToScreen("TermsScreen")}
               >
                 <Left style={{ borderBottomWidth: 0 }}></Left>

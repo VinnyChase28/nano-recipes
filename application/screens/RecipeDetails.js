@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import {
   ImageBackground,
   Dimensions,
@@ -47,6 +47,7 @@ import {
   CollapseHeader,
   CollapseBody,
 } from "accordion-collapse-react-native";
+import CheckBox from "expo-checkbox";
 
 var styles = require("../../assets/files/Styles");
 var { height, width } = Dimensions.get("window");
@@ -59,6 +60,7 @@ export default class RecipeDetails extends Component {
       mute: false,
       shouldPlay: false,
       isLoading: true,
+      checkBoxList: [],
     };
   }
 
@@ -82,7 +84,8 @@ export default class RecipeDetails extends Component {
     recipe_cals,
     recipe_servings,
     url,
-    uid
+    uid,
+    check_boxes
   ) => {
     try {
       let recipe = {
@@ -100,6 +103,7 @@ export default class RecipeDetails extends Component {
         recipe_cals: recipe_cals,
         url: url,
         recipe_servings: recipe_servings,
+        check_boxes: checkBoxList,
       };
 
       const recipes = (await AsyncStorage.getItem("recipes")) || "[]";
@@ -139,9 +143,36 @@ export default class RecipeDetails extends Component {
     });
   };
 
+  componentDidMount() {
+    if (this.state.checkBoxList.length == 0) {
+      let recipeIngredientsLength =
+        this.props.route.params.item.recipe_ingredients.length;
+      let tempArray = [];
+      for (let i = 0; i < recipeIngredientsLength; i++) {
+        tempArray.push({ checked: false });
+      }
+      this.setState({ checkBoxList: tempArray });
+    } else {
+      console.log("Did nothing instead.");
+    }
+  }
+
+  updateCheckbox = (i, index) => {
+    let newCheckboxList = [...this.state.checkBoxList];
+    newCheckboxList[index].checked = !newCheckboxList[index].checked;
+    this.setState({ checkBoxList: newCheckboxList });
+  };
+
+  returnIndex = (i, index) => {
+    return this.state.checkBoxList[index].checked;
+  };
+
   render() {
     const { item } = this.state;
     let user = firebase.auth().currentUser;
+    let test = item.recipe_ingredients;
+
+    //divide ingredients and instructions
     const ItemDivider = () => {
       return (
         <View
@@ -153,6 +184,7 @@ export default class RecipeDetails extends Component {
         />
       );
     };
+
     //shorten url for display
     let one = item.url;
     let urlOne = new URL(one);
@@ -422,7 +454,27 @@ export default class RecipeDetails extends Component {
                   <FlatList
                     data={item.recipe_ingredients}
                     renderItem={({ item, index }) => (
-                      <Text style={{ padding: 5 }}>{item}</Text>
+                      <View
+                        stle={{
+                          width: "100%",
+                          alignItems: "center",
+                        }}
+                      >
+                        <View style={styles.checkboxContainer}>
+                          <CheckBox
+                            value={this.state.checkBoxList[index].checked}
+                            onValueChange={() => {
+                              this.updateCheckbox(test, index);
+                            }}
+                            color={
+                              this.state.checkBoxList.checked
+                                ? "#4630EB"
+                                : undefined
+                            }
+                          />
+                          <Text style={{ paddingLeft: 10 }}>{item}</Text>
+                        </View>
+                      </View>
                     )}
                     ItemSeparatorComponent={ItemDivider}
                     keyExtractor={(index) => index + 1}
@@ -460,27 +512,25 @@ export default class RecipeDetails extends Component {
                           styles.container,
                           {
                             // Try setting `flexDirection` to `"row"`.
-                            flexDirection: "row",
+                            // flexDirection: "row",
                           },
                         ]}
                       >
                         <Text
                           style={{
+                            padding: 3,
+                            color: "#ff8c00",
+                            fontWeight: "bold",
+                            fontSize: 20,
+                          }}
+                        >
+                          {index + 1 + " "}
+                        </Text>
+                        <Text
+                          style={{
                             padding: 4,
                           }}
                         >
-                          <Text
-                            style={{
-                              padding: 3,
-                              color: "#ff8c00",
-                              fontWeight: "bold",
-                              fontFamily: "Cochin",
-                              fontSize: 30,
-                            }}
-                          >
-                            {index + 1 + " "}
-                            {"\n"}
-                          </Text>
                           {item}
                         </Text>
                       </View>

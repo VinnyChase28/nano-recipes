@@ -991,6 +991,8 @@ module.exports = StyleSheet.create({
     borderRadius: 10,
   },
 
+  //spinner
+
   spinnerContainer: {
     flex: 1,
     justifyContent: "center",
@@ -1000,5 +1002,16 @@ module.exports = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     padding: 10,
+  },
+
+  // checkbox styles
+  checkboxContainer: {
+    display: "flex",
+    flexDirection: "row",
+    alignContent: "center",
+    paddingVertical: 15,
+  },
+  checkbox: {
+    alignSelf: "center",
   },
 });

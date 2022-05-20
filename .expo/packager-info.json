@@ -3,8 +3,8 @@
   "expoServerPort": 19000,
   "packagerPort": 19000,
   "webpackServerPort": null,
-  "expoServerNgrokUrl": "https://wm-ieg.vincegauthierdev.nano-recipes.exp.direct",
-  "packagerNgrokUrl": "https://packager.wm-ieg.vincegauthierdev.nano-recipes.exp.direct",
-  "ngrokPid": 82943,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
   "packagerPid": null
 }
