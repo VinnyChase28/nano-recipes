@@ -92,9 +92,6 @@ export default class Categories extends Component {
     if (this.state.isLoading) {
       return <AppPreLoader />;
     }
-
-    console.log(this.state.categories);
-
     return (
       <Container style={styles.background_general}>
         <LinearGradient

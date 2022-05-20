@@ -107,6 +107,7 @@ export default class RecipeDetails extends Component {
       };
 
       const recipes = (await AsyncStorage.getItem("recipes")) || "[]";
+      console.log(recipes);
       let recipesFav = JSON.parse(recipes);
       let recipesItems = recipesFav.filter(function (e) {
         return e.recipe_id !== recipe_id && e.userId == uid;

@@ -148,6 +148,7 @@ class RecipeFav extends React.Component {
     recipesItems = recipesFav.filter(function (e) {
       return e.userId == uid;
     });
+    console.log(recipesItems);
     const recipesArray = recipesItems || [];
     this.setState({
       ...this.state,
