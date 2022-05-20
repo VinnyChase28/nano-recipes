@@ -391,7 +391,8 @@ export default class RecipeDetails extends Component {
                 {Strings.ST17}
               </Text>
               <Text style={{ fontSize: 14, fontWeight: "bold" }}>
-                {item.recipe_cals}
+                {/* {item.recipe_cals} */}
+                Coming Soon
               </Text>
             </Col>
           </Grid>
@@ -463,45 +464,29 @@ export default class RecipeDetails extends Component {
                           },
                         ]}
                       >
-                        <Text style={{ padding: 1, color: "#ff8c00" }}>
-                          {index + 1}
+                        <Text
+                          style={{
+                            padding: 4,
+                          }}
+                        >
+                          <Text
+                            style={{
+                              padding: 3,
+                              color: "#ff8c00",
+                              fontWeight: "bold",
+                              fontFamily: "Cochin",
+                              fontSize: 30,
+                            }}
+                          >
+                            {index + 1 + " "}
+                            {"\n"}
+                          </Text>
+                          {item}
                         </Text>
-                        <Text style={{ padding: 1 }}>{item}</Text>
                       </View>
                     )}
                     ItemSeparatorComponent={ItemDivider}
                     keyExtractor={(index) => index + 1}
-                  />
-                </View>
-              </CollapseBody>
-            </Collapse>
-
-            <Collapse isCollapsed={true}>
-              <CollapseHeader>
-                <LinearGradient
-                  colors={[ColorsApp.SECOND, ColorsApp.PRIMARY]}
-                  start={[0, 0]}
-                  end={[1, 0]}
-                  style={styles.collapseStyle}
-                >
-                  <Text
-                    style={{
-                      color: "#fff",
-                      fontWeight: "bold",
-                      fontSize: 13,
-                    }}
-                  >
-                    {Strings.ST14.toUpperCase()}
-                  </Text>
-                </LinearGradient>
-              </CollapseHeader>
-              <CollapseBody>
-                <View style={{ marginHorizontal: 20, backgroundColor: "#FFF" }}>
-                  <HTML
-                    value={item.recipe_notes}
-                    onLinkPress={(evt, href) => {
-                      Linking.openURL(href);
-                    }}
                   />
                 </View>
               </CollapseBody>

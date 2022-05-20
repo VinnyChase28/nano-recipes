@@ -59,19 +59,24 @@ class GridRecipesHome extends React.PureComponent {
         headers: {
           apikey: SUPABASE_KEY,
           Authorization: `Bearer ${SUPABASE_KEY}`,
-          Range: "0-9",
         },
       }
     )
       .then((response) => response.json())
       .then((responseJson) => {
+        while (responseJson.length > 5) {
+          responseJson.splice(
+            Math.floor(Math.random() * responseJson.length),
+            1
+          );
+          console.log(responseJson);
+        }
         this.setState(
           {
             recipes: responseJson,
           },
 
-          function () {
-          }
+          function () {}
         );
       })
       .catch((error) => {
@@ -131,7 +136,7 @@ class GridRecipesHome extends React.PureComponent {
                     style={{ width: 15, height: 15, marginRight: -8 }}
                   />
                   <Text style={{ fontSize: 12, color: "#9e9e9e" }}>
-                    {item.recipe_cals}
+                    Coming Soon
                   </Text>
                 </View>
               </Body>

@@ -35,13 +35,19 @@ class RecipesHome extends React.PureComponent {
         headers: {
           apikey: SUPABASE_KEY,
           Authorization: `Bearer ${SUPABASE_KEY}`,
-          Range: "0-9",
         },
       }
     )
       .then((response) => response.json())
       .then((responseJson) => {
         console.log(responseJson.length, "this many recipes in recipes home");
+        while (responseJson.length > 5) {
+          responseJson.splice(
+            Math.floor(Math.random() * responseJson.length),
+            1
+          );
+          console.log(responseJson);
+        }
         this.setState(
           {
             recipes: responseJson,
@@ -127,7 +133,7 @@ class RecipesHome extends React.PureComponent {
             style={{ flex: 1, marginRight: 10 }}
           >
             <ImageBackground
-              source={{ uri: ConfigApp.URL + "images/" + item.recipe_image }}
+              source={{ uri: item.recipe_image }}
               style={{
                 height: 100,
                 width: width * 0.7,

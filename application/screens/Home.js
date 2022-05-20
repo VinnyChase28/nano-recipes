@@ -336,7 +336,7 @@ export default class Home extends Component {
 
           <RecipesHome />
 
-          <ListItem icon style={{ borderBottomWidth: 0, marginTop: 12 }}>
+          {/* <ListItem icon style={{ borderBottomWidth: 0, marginTop: 12 }}>
             <Body style={{ borderBottomWidth: 0 }}>
               <Text
                 style={{
@@ -371,9 +371,9 @@ export default class Home extends Component {
                 </View>
               </TouchableOpacity>
             </Right>
-          </ListItem>
+          </ListItem> */}
 
-          <CategoriesHome />
+          {/* <CategoriesHome /> */}
 
           <View
             style={{

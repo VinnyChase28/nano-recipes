@@ -62,22 +62,6 @@ export default class SideMenu extends Component {
 
           {/* <ListItem
             style={styles.item_menu}
-            onPress={this.navigateToScreen("ChefsScreen")}
-            icon
-          >
-            <Left style={{ borderBottomWidth: 0 }}>
-              <SimpleLineIcons name="user" style={styles.iconSidemenu} />
-            </Left>
-            <Body style={{ borderBottomWidth: 0 }}>
-              <Text style={styles.text_menu}>{Strings.ST3.toUpperCase()}</Text>
-            </Body>
-            <Right style={{ borderBottomWidth: 0 }}>
-              <SimpleLineIcons name="arrow-right" style={styles.icon_menu} />
-            </Right>
-          </ListItem> */}
-
-          <ListItem
-            style={styles.item_menu}
             onPress={this.navigateToScreen("SearchScreen")}
             icon
           >
@@ -90,7 +74,7 @@ export default class SideMenu extends Component {
             <Right style={{ borderBottomWidth: 0 }}>
               <SimpleLineIcons name="arrow-right" style={styles.icon_menu} />
             </Right>
-          </ListItem>
+          </ListItem> */}
 
           <ListItem
             style={styles.item_menu}
@@ -102,6 +86,22 @@ export default class SideMenu extends Component {
             </Left>
             <Body style={{ borderBottomWidth: 0 }}>
               <Text style={styles.text_menu}>{Strings.ST6.toUpperCase()}</Text>
+            </Body>
+            <Right style={{ borderBottomWidth: 0 }}>
+              <SimpleLineIcons name="arrow-right" style={styles.icon_menu} />
+            </Right>
+          </ListItem>
+
+          <ListItem
+            style={styles.item_menu}
+            onPress={this.navigateToScreen("ContactUsScreen")}
+            icon
+          >
+            <Left style={{ borderBottomWidth: 0 }}>
+              <SimpleLineIcons name="user" style={styles.iconSidemenu} />
+            </Left>
+            <Body style={{ borderBottomWidth: 0 }}>
+              <Text style={styles.text_menu}>CONTACT US</Text>
             </Body>
             <Right style={{ borderBottomWidth: 0 }}>
               <SimpleLineIcons name="arrow-right" style={styles.icon_menu} />
