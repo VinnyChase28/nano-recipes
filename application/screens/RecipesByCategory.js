@@ -65,6 +65,12 @@ export default class RecipesByCategory extends Component {
     )
       .then((response) => response.json())
       .then((responseJson) => {
+        while (responseJson.length > 5) {
+          responseJson.splice(
+            Math.floor(Math.random() * responseJson.length),
+            1
+          );
+        }
         this.setState(
           {
             isLoading: false,

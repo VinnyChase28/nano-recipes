@@ -69,7 +69,6 @@ class GridRecipesHome extends React.PureComponent {
             Math.floor(Math.random() * responseJson.length),
             1
           );
-          console.log(responseJson);
         }
         this.setState(
           {

@@ -103,7 +103,7 @@ export default class RecipeDetails extends Component {
         recipe_cals: recipe_cals,
         url: url,
         recipe_servings: recipe_servings,
-        check_boxes: checkBoxList,
+        check_boxes: check_boxes,
       };
 
       const recipes = (await AsyncStorage.getItem("recipes")) || "[]";
@@ -261,7 +261,8 @@ export default class RecipeDetails extends Component {
                   item.recipe_cals,
                   item.recipe_servings,
                   item.url,
-                  user.uid
+                  user.uid,
+                  this.state.checkBoxList
                 )}
               >
                 <Ionicons
@@ -467,9 +468,9 @@ export default class RecipeDetails extends Component {
                               this.updateCheckbox(test, index);
                             }}
                             color={
-                              this.state.checkBoxList.checked
-                                ? "#4630EB"
-                                : undefined
+                              this.state.checkBoxList[index].checked
+                                ? "#F25939"
+                                : "#F25939"
                             }
                           />
                           <Text style={{ paddingLeft: 10 }}>{item}</Text>

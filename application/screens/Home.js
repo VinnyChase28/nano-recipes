@@ -88,13 +88,22 @@ export default class Home extends Component {
   }
 
   makeRemoteRequest = () => {
-    this.setState(
-      { isLoading: true },
-      () => {
-        console.log(this.state.isLoading, "started loading");
-      },
-      this.isLoading
+    var res = this.state.string.match(
+      /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g
     );
+    if (res == null) {
+      Alert.alert("Check your url.", "We know copy and pasting can be hard", [
+        {
+          text: "Cancel",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel",
+        },
+        { text: "OK", onPress: () => console.log("OK Pressed") },
+      ]);
+      return;
+    }
+
+    this.setState({ isLoading: true }, () => {}, this.isLoading);
 
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -118,7 +127,6 @@ export default class Home extends Component {
           if (!responseJson) {
             console.log("no response");
           } else {
-            console.log(responseJson.recipe_directions.length);
             if (
               typeof responseJson.recipe_title == "string" &&
               typeof responseJson.recipe_image == "string" &&
@@ -132,7 +140,23 @@ export default class Home extends Component {
             } else if (responseJson.recipe_directions.length > 30) {
               Alert.alert(
                 "That didn't work.",
-                "The recipe appears to be in a format we don't understand yet.",
+                "We're not smart enough to understand this recipe (yet)",
+                [
+                  {
+                    text: "Cancel",
+                    onPress: () => console.log("Cancel Pressed"),
+                    style: "cancel",
+                  },
+                  { text: "OK", onPress: () => console.log("OK Pressed") },
+                ]
+              ),
+                this.setState({
+                  isLoading: false,
+                });
+            } else if (responseJson.recipe_directions.length > 30) {
+              Alert.alert(
+                "That didn't work.",
+                "We're not smart enough to understand this recipe (yet)",
                 [
                   {
                     text: "Cancel",
@@ -148,7 +172,7 @@ export default class Home extends Component {
             } else {
               Alert.alert(
                 "That didn't work.",
-                "The recipe appears to be in a format we don't understand yet.",
+                "We're not smart enough to understand this recipe (yet)",
                 [
                   {
                     text: "Cancel",
@@ -313,7 +337,7 @@ export default class Home extends Component {
               <Input
                 placeholder={Strings.ST40}
                 onChangeText={(string) => this.setState({ string })}
-                onSubmitEditing={() => this.makeRemoteRequest()}
+                onSubmitEditing={(string) => this.makeRemoteRequest(string)}
                 placeholderTextColor="#a4a4a4"
                 style={{ fontSize: 15, color: "#a4a4a4" }}
               />

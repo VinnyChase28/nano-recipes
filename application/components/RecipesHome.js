@@ -40,13 +40,11 @@ class RecipesHome extends React.PureComponent {
     )
       .then((response) => response.json())
       .then((responseJson) => {
-        console.log(responseJson.length, "this many recipes in recipes home");
         while (responseJson.length > 5) {
           responseJson.splice(
             Math.floor(Math.random() * responseJson.length),
             1
           );
-          console.log(responseJson);
         }
         this.setState(
           {

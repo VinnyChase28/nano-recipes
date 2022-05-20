@@ -63,6 +63,7 @@ export default class Categories extends Component {
     )
       .then((response) => response.json())
       .then((responseJson) => {
+        responseJson.sort((a, b) => a.category_id - b.category_id);
         this.setState(
           {
             isLoading: false,
@@ -91,6 +92,8 @@ export default class Categories extends Component {
     if (this.state.isLoading) {
       return <AppPreLoader />;
     }
+
+    console.log(this.state.categories);
 
     return (
       <Container style={styles.background_general}>
@@ -192,7 +195,10 @@ export default class Categories extends Component {
                 >
                   <ImageBackground
                     source={{
-                      uri: ConfigApp.URL + "images/" + item.category_image,
+                      uri:
+                        ConfigApp.URL +
+                        "/storage/v1/object/public/images/" +
+                        item.category_image,
                     }}
                     style={{
                       height: 110,

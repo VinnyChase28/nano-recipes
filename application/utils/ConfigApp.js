@@ -6,7 +6,7 @@ const isStandAloneApp = Constants.appOwnership == "standalone";
 
 const ConfigApp = {
   // backend url (with slash at end of url)
-  URL: "https://wicombit.com/demo/yonia/",
+  URL: "https://fodlmtsqwocmyxtgpqiw.supabase.co",
 
   // facebook page url
   FACEBOOK: "https://facebook.com",
