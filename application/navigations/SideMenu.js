@@ -38,7 +38,7 @@ export default class SideMenu extends Component {
         <View style={styles.sideMenu}>
           <Image
             source={require("../../assets/images/logo.png")}
-            style={{ flex: 1, width: 220, height: 220 }}
+            style={{ flex: 1, width: 220, height: 220, borderRadius: 50 }}
             resizeMode="contain"
           />
         </View>
