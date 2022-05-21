@@ -863,6 +863,8 @@ module.exports = StyleSheet.create({
     height: 200,
     marginTop: 15,
     marginBottom: 5,
+    borderRadius: 50,
+    marginBottom: 40,
   },
 
   //////////////////////// LOGIN & SIGNUP

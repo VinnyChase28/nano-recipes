@@ -51,12 +51,12 @@ class RecipeFav extends React.Component {
   removeRecipe = async (recipe_id) => {
     try {
       var user = firebase.auth().currentUser;
-      uid = user.uid;
+      uid = 123;
 
       const recipes = await AsyncStorage.getItem("recipes");
       let recipesFav = JSON.parse(recipes);
       recipesItems = recipesFav.filter(function (e) {
-        return e.recipe_id !== recipe_id && e.userId == uid;
+        return e.recipe_id !== recipe_id && uid == uid;
       });
 
       await AsyncStorage.setItem("recipes", JSON.stringify(recipesItems));
@@ -140,8 +140,8 @@ class RecipeFav extends React.Component {
   }
 
   async fetchRecipes() {
-    var user = firebase.auth().currentUser;
-    uid = user.uid;
+    var user = 123;
+    var uid = user;
 
     let recipesJSON = await AsyncStorage.getItem("recipes");
     let recipesFav = JSON.parse(recipesJSON);

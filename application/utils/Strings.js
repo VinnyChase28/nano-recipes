@@ -127,7 +127,7 @@ const Strings = {
 
   ST73: "Contact Us",
 
-  ST74: "Message Sent Successfully",
+  ST74: "Thanks for reaching out!",
 
   ST75: "Contact Us",
 

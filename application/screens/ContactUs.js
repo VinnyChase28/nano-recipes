@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   Image,
   StatusBar,
+  TextInput,
 } from "react-native";
 import {
   Container,
@@ -30,6 +31,7 @@ import BannerAd from "../components/BannerAd";
 import { Grid, Row, Col } from "react-native-easy-grid";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import Toast from "react-native-root-toast";
+import { isLoading } from "expo-font";
 
 var styles = require("../../assets/files/Styles");
 var { height, width } = Dimensions.get("window");
@@ -42,6 +44,7 @@ export default class ContactUs extends Component {
       UserName: "",
       UserEmail: "",
       UserMessage: "",
+      isLoading: false,
     };
   }
 
@@ -49,8 +52,8 @@ export default class ContactUs extends Component {
     const { UserName } = this.state;
     const { UserEmail } = this.state;
     const { UserMessage } = this.state;
-
-    fetch(ConfigApp.URL + "controller/contactform.php", {
+    this.setState({ isLoading: true });
+    fetch("https://us-central1-north-face-seo.cloudfunctions.net/function-3", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -64,8 +67,10 @@ export default class ContactUs extends Component {
         message: UserMessage,
       }),
     })
-      .then((response) => response.json())
+      .then((response) => response)
       .then((responseJson) => {
+        this.setState({ isLoading: false });
+        console.log(responseJson);
         if (responseJson == "false") {
           Toast.show(Strings.ST32, {
             duration: Toast.durations.SHORT,
@@ -90,6 +95,13 @@ export default class ContactUs extends Component {
   };
 
   render() {
+    if (this.state.isLoading === true) {
+      return (
+        <View style={[styles.spinnerContainer, styles.spinner]}>
+          <ActivityIndicator size="large" color="orange" />
+        </View>
+      );
+    }
     return (
       <Container style={styles.background_general}>
         <LinearGradient
@@ -211,21 +223,23 @@ export default class ContactUs extends Component {
                     autoCapitalize="none"
                   />
                 </Item>
-
-                <Textarea
-                  rowSpan={3}
-                  bordered
-                  placeholder={Strings.ST80}
-                  placeholderTextColor="#888888"
-                  onChangeText={(UserMessage) => this.setState({ UserMessage })}
-                  style={{
-                    fontSize: 15,
-                    marginTop: 15,
-                    borderTopWidth: 0,
-                    borderLeftWidth: 0,
-                    borderRightWidth: 0,
-                  }}
-                />
+                <Item stackedLabel last>
+                  <Label style={{ color: "#888888", fontSize: 15 }}>
+                    Message
+                  </Label>
+                  <Input
+                    onChangeText={(UserMessage) =>
+                      this.setState({ UserMessage })
+                    }
+                    style={{
+                      fontSize: 15,
+                      height: 100,
+                      paddingRight: 15,
+                    }}
+                    autoCapitalize="none"
+                    multiline
+                  />
+                </Item>
               </Form>
 
               <View style={{ alignItems: "center", justifyContent: "center" }}>

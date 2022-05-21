@@ -84,7 +84,7 @@ export default class RecipeDetails extends Component {
     recipe_cals,
     recipe_servings,
     url,
-    uid,
+    uid = 123,
     check_boxes
   ) => {
     try {
@@ -170,7 +170,7 @@ export default class RecipeDetails extends Component {
 
   render() {
     const { item } = this.state;
-    let user = firebase.auth().currentUser;
+    let user = 123;
     let test = item.recipe_ingredients;
 
     //divide ingredients and instructions
@@ -262,7 +262,7 @@ export default class RecipeDetails extends Component {
                   item.recipe_cals,
                   item.recipe_servings,
                   item.url,
-                  user.uid,
+                  user,
                   this.state.checkBoxList
                 )}
               >
@@ -319,7 +319,7 @@ export default class RecipeDetails extends Component {
                 }}
               >
                 <Text style={{ color: "#FFF", fontSize: 11 }}>
-                  Recipe tag coming soon
+                  {item.category_title ? item.category_title : "Personal"}
                 </Text>
               </LinearGradient>
               <Text
@@ -344,7 +344,7 @@ export default class RecipeDetails extends Component {
             >
               {item.recipe_title}
             </Text>
-            <ItemRating itemId={item.recipe_id} starSize={18} starWidth={95} />
+            {/* <ItemRating itemId={item.recipe_id} starSize={18} starWidth={95} /> */}
           </LinearGradient>
         </ImageBackground>
 
@@ -550,7 +550,7 @@ export default class RecipeDetails extends Component {
           ></View>
 
           <View style={{ marginBottom: 20, backgroundColor: "#FFF" }}>
-            <ListItem icon style={{ borderBottomWidth: 0 }}>
+            {/* <ListItem icon style={{ borderBottomWidth: 0 }}>
               <Body style={{ borderBottomWidth: 0 }}>
                 <Text
                   style={{
@@ -585,7 +585,7 @@ export default class RecipeDetails extends Component {
                   </View>
                 </TouchableOpacity>
               </Right>
-            </ListItem>
+            </ListItem> */}
 
             <View
               style={{

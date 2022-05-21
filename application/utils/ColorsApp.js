@@ -2,8 +2,8 @@
 
 const ColorsApp = {
   // backend url
-  PRIMARY: "#F25939",
-  SECOND: "#FDB0A1",
+  PRIMARY: "#FF5757",
+  SECOND: "#FF8989",
 };
 
 export default ColorsApp;

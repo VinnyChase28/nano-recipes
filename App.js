@@ -50,25 +50,25 @@ const loadAssetsAsync = async () => {
 };
 
 const App = () => {
-  const [isLogged, setIsLogged] = useState(false);
+  const [isLogged, setIsLogged] = useState(true);
   const [isReady, setIsReady] = useState(false);
-  const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState(true);
 
-  useEffect(() => {
-    async function checkUser() {
-      await firebase.auth().onAuthStateChanged((user) => {
-        if (user !== null) {
-          setIsLogged(true);
-          setLoaded(true);
-        } else {
-          setIsLogged(false);
-          setLoaded(true);
-        }
-      });
-    }
+  // useEffect(() => {
+  //   async function checkUser() {
+  //     await firebase.auth().onAuthStateChanged((user) => {
+  //       if (user !== null) {
+  //         setIsLogged(true);
+  //         setLoaded(true);
+  //       } else {
+  //         setIsLogged(true);
+  //         setLoaded(true);
+  //       }
+  //     });
+  //   }
 
-    checkUser();
-  }, []);
+  //   checkUser();
+  // }, []);
 
   if (!isReady) {
     return (
@@ -90,7 +90,7 @@ const App = () => {
         <RootSiblingParent>
           <StatusBar />
           <NavigationContainer>
-            {isLogged ? <LoggedNavigation /> : <GuestNavigation />}
+            <LoggedNavigation />
           </NavigationContainer>
         </RootSiblingParent>
       </Root>

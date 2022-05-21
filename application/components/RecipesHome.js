@@ -110,7 +110,7 @@ class RecipesHome extends React.PureComponent {
             <Text style={{ fontSize: 13, color: "#a4a4a4", marginBottom: 5 }}>
               {item.category_title}
             </Text>
-            <ItemRating itemId={item.recipe_id} starSize={15} starWidth={75} />
+            {/* <ItemRating itemId={item.recipe_id} starSize={15} starWidth={75} /> */}
           </View>
         </View>
       </TouchableOpacity>
@@ -173,11 +173,11 @@ class RecipesHome extends React.PureComponent {
                 >
                   {item.category_title}
                 </Text>
-                <ItemRating
+                {/* <ItemRating
                   itemId={item.recipe_id}
                   starSize={15}
                   starWidth={75}
-                />
+                /> */}
               </View>
             </View>
           </TouchableOpacity>
