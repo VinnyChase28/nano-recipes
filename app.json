@@ -16,12 +16,14 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.wicombit.nanorecipes"
+      "bundleIdentifier": "com.wicombit.nanorecipes",
+      "buildNumber": "1.0.1"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "backgroundColor": "#FFFFFF",
+        "versionCode": 2
       },
       "package": "com.wicombit.nanorecipes"
     },
