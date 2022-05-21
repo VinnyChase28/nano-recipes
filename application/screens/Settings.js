@@ -139,7 +139,7 @@ export default class Settings extends Component {
             >
               <Image
                 source={require("../../assets/images/logo_dark.png")}
-                style={{ flex: 1, width: 130, height: 130 }}
+                style={{ flex: 1, width: 130, height: 130, borderRadius: 50 }}
                 resizeMode="contain"
               />
             </Row>
