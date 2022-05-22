@@ -44,7 +44,7 @@ import CategoriesHome from "../components/CategoriesHome";
 import ChefsHome from "../components/ChefsHome";
 import GridView from "react-native-super-grid";
 import Strings from "../utils/Strings";
-import NativeBannerAd from "../components/NativeBannerAd";
+// import NativeBannerAd from "../components/NativeBannerAd";
 import ColorsApp from "../utils/ColorsApp";
 
 var styles = require("../../assets/files/Styles");
@@ -407,7 +407,7 @@ export default class Home extends Component {
               marginVertical: 5,
             }}
           >
-            <NativeBannerAd />
+            {/* <NativeBannerAd /> */}
           </View>
 
           <ListItem icon style={{ borderBottomWidth: 0 }}>

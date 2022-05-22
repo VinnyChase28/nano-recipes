@@ -1,25 +1,25 @@
-import React, {Component} from 'react';
-import{ View} from 'react-native';
-import ConfigApp from '../utils/ConfigApp';
-import { AdMobBanner } from 'expo-ads-admob';
-var styles = require('../../assets/files/Styles');
+// import React, {Component} from 'react';
+// import{ View} from 'react-native';
+// import ConfigApp from '../utils/ConfigApp';
+// // import { AdMobBanner } from 'expo-ads-admob';
+// var styles = require('../../assets/files/Styles');
 
-class RectBannerAd extends React.Component {
+// class RectBannerAd extends React.Component {
 
 
-  render () {
+//   render () {
 
-    return (
+//     return (
 
-<AdMobBanner
-  bannerSize="mediumRectangle"
-  adUnitID={ConfigApp.BANNER_ID}
-  testDeviceID={ConfigApp.TESTDEVICE_ID}
-  onDidFailToReceiveAdWithError={this.bannerError} />
+// <AdMobBanner
+//   bannerSize="mediumRectangle"
+//   adUnitID={ConfigApp.BANNER_ID}
+//   testDeviceID={ConfigApp.TESTDEVICE_ID}
+//   onDidFailToReceiveAdWithError={this.bannerError} />
 
-    )
-  }
+//     )
+//   }
 
-}
+// }
 
-export default RectBannerAd;
+// export default RectBannerAd;
