@@ -30,7 +30,7 @@ import Strings from "../utils/Strings";
 import BannerAd from "../components/BannerAd";
 import { Grid, Row, Col } from "react-native-easy-grid";
 import ColorsApp from "../utils/ColorsApp";
-import { SUPABASE_KEY } from "@env";
+import { EXPO_SUPABASE_KEY } from "@env";
 import { supabase } from "../utils/Supabase";
 
 var styles = require("../../assets/files/Styles");
@@ -58,8 +58,8 @@ export default class RecipesByCategory extends Component {
       `https://fodlmtsqwocmyxtgpqiw.supabase.co/rest/v1/recipes?or=(category_title.eq.${this.props.route.params.TitleCategory})`,
       {
         headers: {
-          apikey: SUPABASE_KEY,
-          Authorization: `Bearer ${SUPABASE_KEY}`,
+          apikey: EXPO_SUPABASE_KEY,
+          Authorization: `Bearer ${EXPO_SUPABASE_KEY}`,
         },
       }
     )

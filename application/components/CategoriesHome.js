@@ -14,7 +14,7 @@ import AppPreLoader from "./AppPreLoader";
 import ConfigApp from "../utils/ConfigApp";
 import GridView from "react-native-super-grid";
 import Strings from "../utils/Strings";
-import { SUPABASE_KEY } from "@env";
+import { EXPO_SUPABASE_KEY } from "@env";
 
 var styles = require("../../assets/files/Styles");
 var { height, width } = Dimensions.get("window");
@@ -30,8 +30,8 @@ class CategoriesHome extends React.PureComponent {
       "https://fodlmtsqwocmyxtgpqiw.supabase.co/rest/v1/categories?select=*",
       {
         headers: {
-          apikey: `${SUPABASE_KEY}`,
-          Authorization: `Bearer ${SUPABASE_KEY}`,
+          apikey: `${EXPO_SUPABASE_KEY}`,
+          Authorization: `Bearer ${EXPO_SUPABASE_KEY}`,
         },
       }
     )

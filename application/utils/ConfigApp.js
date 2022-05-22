@@ -31,7 +31,7 @@ export default ConfigApp;
 
 fetch("https://fodlmtsqwocmyxtgpqiw.supabase.co/rest/v1/recipes?select=*", {
   headers: {
-    apikey: "SUPABASE_KEY",
-    Authorization: "Bearer SUPABASE_KEY",
+    apikey: "EXPO_SUPABASE_KEY",
+    Authorization: "Bearer EXPO_SUPABASE_KEY",
   },
 });

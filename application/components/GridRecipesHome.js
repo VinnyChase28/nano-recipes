@@ -42,7 +42,7 @@ import ColorsApp from "../utils/ColorsApp";
 
 var styles = require("../../assets/files/Styles");
 var { height, width } = Dimensions.get("window");
-import { SUPABASE_KEY } from "@env";
+import { EXPO_SUPABASE_KEY } from "@env";
 
 class GridRecipesHome extends React.PureComponent {
   constructor(props) {
@@ -57,8 +57,8 @@ class GridRecipesHome extends React.PureComponent {
       "https://fodlmtsqwocmyxtgpqiw.supabase.co/rest/v1/recipes?&select=*",
       {
         headers: {
-          apikey: SUPABASE_KEY,
-          Authorization: `Bearer ${SUPABASE_KEY}`,
+          apikey: EXPO_SUPABASE_KEY,
+          Authorization: `Bearer ${EXPO_SUPABASE_KEY}`,
         },
       }
     )

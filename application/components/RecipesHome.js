@@ -18,7 +18,7 @@ import ColorsApp from "../utils/ColorsApp";
 import ItemRating from "./ItemRating";
 
 var { height, width } = Dimensions.get("window");
-import { SUPABASE_KEY } from "@env";
+import { EXPO_SUPABASE_KEY } from "@env";
 class RecipesHome extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -33,8 +33,8 @@ class RecipesHome extends React.PureComponent {
       "https://fodlmtsqwocmyxtgpqiw.supabase.co/rest/v1/recipes?&select=*",
       {
         headers: {
-          apikey: SUPABASE_KEY,
-          Authorization: `Bearer ${SUPABASE_KEY}`,
+          apikey: EXPO_SUPABASE_KEY,
+          Authorization: `Bearer ${EXPO_SUPABASE_KEY}`,
         },
       }
     )
