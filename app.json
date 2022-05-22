@@ -2,7 +2,7 @@
   "expo": {
     "name": "nano recipes",
     "slug": "nanorecipes",
-    "version": "10.0.2",
+    "version": "10.0.4",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -17,13 +17,13 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.wicombit.nanorecipes",
-      "buildNumber": "1.0.1"
+      "buildNumber": "1.0.2"
     },
     "android": {
+      "versionCode": 4,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF",
-        "versionCode": 2
+        "backgroundColor": "#FFFFFF"
       },
       "package": "com.wicombit.nanorecipes"
     },
